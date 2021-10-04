@@ -6,24 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preston Jay</title>
-	<script src="https://kit.fontawesome.com/ad835ba750.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ad835ba750.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/app.js"></script>
 </head>
 
 <body>
-    <header>
-        <nav>
-
-        </nav>
-    </header>
-    <main>
-        <h1>Preston Jay</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, vero.</p>
-    </main>
-    <footer>
-
-    </footer>
-    <script src="js/app.js"></script>
+    <h1 class="title">ToDo</h1>
+    <div class="all-tasks">
+        <h2 class="task-list-title">My Lists</h2>
+        <ul class="task-list">
+            <li class="active-list">Youtube</li>
+            <li>Work</li>
+            <li>Grocery</li>
+        </ul>
+        <form action="">
+            <input type="text" class="new list" placeholder="new list name" aria-label="new list name">
+            <button class="btn list" aria-label="create new list">+</button>
+        </form>
+    </div>
+    <div class="todo-list">
+        <div class="todo-header">
+            <h2 class="list-title">Youtube</h2>
+            <p class="task-count">3 tasks remaining </p>
+        </div>
+        <div class="todo-body">
+            <div class="tasks">
+                <input type="checkbox" id="task-1">
+                <label for="task-1">
+                    <span class="custom-checkbox"></span>
+                    Do something crazy</label>
+            </div>
+            <div class="new-task-creator"></div>
+            <div class="delete-task"></div>
+        </div>
+        <div class="todo-body">
+            <div class="tasks">
+                <input type="checkbox" id="task-2">
+                <label for="task-2">
+                    <span class="custom-checkbox"></span>
+                    Task 2</label>
+            </div>
+            <div class="new-task-creator"></div>
+            <div class="delete-task"></div>
+        </div>
+        <div class="todo-body">
+            <div class="tasks">
+                <input type="checkbox" id="task-3">
+                <label for="task-3">
+                    <span class="custom-checkbox"></span>
+                    Task 3</label>
+            </div>
+            <div class="new-task-creator">
+                <form action="">
+                    <input type="text" class="new list" placeholder="new task name" aria-label="new task name">
+                    <button class="btn task" aria-label="create new task">+</button>
+                </form>
+            </div>
+            <div class="edit-tasks">
+                <button class="btn delete">Clear completed tasks</button>
+                <button class="btn delete"> Delete list</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
