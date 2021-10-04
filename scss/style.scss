@@ -3,6 +3,11 @@ $clr-light: rgb(244, 244, 244);
 $clr-dark: rgb(51, 51, 51);
 $clr-warning: rgb(99, 36, 36);
 
+$fnt-md: 1.5rem;
+$fnt-sm: 1rem;
+
+$trans: .2s ease-in;
+
 $clr-dark-opa: rgba(51, 51, 51, .4);
 *,
 *::before,
@@ -14,7 +19,7 @@ body {
 	margin: 0;
 	font-family: 'Work Sans', sans-serif;
 	font-weight: 300;
-	font-size: 1.5rem;
+	font-size: $fnt-md;
 	background-color: $clr-primary;
 	color: $clr-light;
 
@@ -22,16 +27,72 @@ body {
 	grid: 'header header header header' auto '.... lists active ....' auto / 1fr minmax(100px, 300px)
 		minmax(250px, 500px) 1fr;
 	.title {
+		font-weight: 900;
 		grid-area: header;
 		display: flex;
 		justify-content: flex-end;
 		letter-spacing: 1em;
 		color: $clr-dark-opa;
+		font-size: calc(4vw + 2rem);
+		margin: 0;
 	}
 	.all-tasks {
 		grid-area: lists;
 	}
+	.task-list {
+		font-size: 1.2rem;
+		line-height: 1.5;
+		list-style: circle;
+		list-style-position: inside;
+		padding-left: .1em;
+		.active-list {
+			font-weight: 700;
+			letter-spacing: 1px;
+		}
+	}
 	.todo-list {
 		grid-area: active;
+	}
+	form {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+	}
+	.btn {
+		cursor: pointer;
+		background: 0;
+		border: 0;
+		padding: 0;
+		color: $clr-light;
+		transition: opacity $trans;
+		&.list {
+			font-size: $fnt-md;
+			font-weight: 900;
+			margin-right: .25em;
+			&:hover {
+				opacity: .7;
+			}
+		}
+	}
+	.new {
+		font-size: $fnt-md;
+		background: transparent;
+		border: none;
+		border-bottom: 1px solid $clr-light;
+		outline: none;
+		transition: border-bottom $trans;
+		caret-color: $clr-light;
+		&.list {
+			font-size: $fnt-sm;
+		}
+		&::placeholder {
+			color: $clr-light;
+		}
+		&:focus {
+			border-bottom-width: 4px;
+			&::placeholder {
+				opacity: .2;
+			}
+		}
 	}
 }
