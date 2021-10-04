@@ -15,7 +15,8 @@ body {
   display: grid;
   grid: "header header header header" auto ".... lists active ...." auto/1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
 }
-body .title {
+
+.title {
   font-weight: 900;
   grid-area: header;
   display: flex;
@@ -25,45 +26,53 @@ body .title {
   font-size: calc(4vw + 2rem);
   margin: 0;
 }
-body .all-tasks {
+
+.all-tasks {
   grid-area: lists;
 }
-body .task-list {
+
+.task-list {
   font-size: 1.2rem;
   line-height: 1.5;
   list-style: circle;
   list-style-position: inside;
   padding-left: 0.1em;
 }
-body .task-list .active-list {
+.task-list .active-list {
   font-weight: 700;
   letter-spacing: 1px;
 }
-body .todo-list {
+
+.todo-list {
   grid-area: active;
 }
-body form {
+
+form {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
-body .btn {
+
+.btn {
   cursor: pointer;
   background: 0;
   border: 0;
   padding: 0;
   color: #f4f4f4;
-  transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+  outline: none;
 }
-body .btn.list {
+.btn.create {
   font-size: 1.5rem;
   font-weight: 900;
   margin-right: 0.25em;
 }
-body .btn.list:hover {
+.btn.create:hover, .btn.create:focus {
   opacity: 0.7;
+  transform: scale(1.4);
 }
-body .new {
+
+.new {
   font-size: 1.5rem;
   background: transparent;
   border: none;
@@ -71,17 +80,18 @@ body .new {
   outline: none;
   transition: border-bottom 0.2s ease-in;
   caret-color: #f4f4f4;
-}
-body .new.list {
-  font-size: 1rem;
-}
-body .new::placeholder {
   color: #f4f4f4;
 }
-body .new:focus {
+.new.list {
+  font-size: 1rem;
+}
+.new::placeholder {
+  color: #f4f4f4;
+}
+.new:focus {
   border-bottom-width: 4px;
 }
-body .new:focus::placeholder {
+.new:focus::placeholder {
   opacity: 0.2;
 }
 
