@@ -95,4 +95,35 @@ form {
   opacity: 0.2;
 }
 
+.todo-list {
+  border: 1px solid #f4f4f4;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+}
+.todo-header h2 {
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+.todo-header .task-count {
+  font-size: 1rem;
+}
+
+.todo-body {
+  margin-bottom: 1rem;
+}
+
+.new-task-creator {
+  margin-bottom: 1.5rem;
+}
+
+.edit-tasks {
+  display: flex;
+  justify-content: space-around;
+}
+
 /*# sourceMappingURL=style.css.map */

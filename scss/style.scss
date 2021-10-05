@@ -6,6 +6,8 @@ $clr-warning: rgb(99, 36, 36);
 $fnt-md: 1.5rem;
 $fnt-sm: 1rem;
 
+$b-rd: 1rem;
+
 $trans: .2s ease-in;
 
 $clr-dark-opa: rgba(51, 51, 51, .4);
@@ -99,4 +101,30 @@ form {
 			opacity: .2;
 		}
 	}
+}
+.todo-list {
+	border: 1px solid $clr-light;
+	border-radius: $b-rd;
+	padding: 1rem;
+}
+.todo-header {
+	display: flex;
+	justify-content: space-between;
+	h2 {
+		margin: 0;
+		margin-bottom: $fnt-md;
+	}
+	.task-count {
+		font-size: $fnt-sm;
+	}
+}
+.todo-body {
+	margin-bottom: $fnt-sm;
+}
+.new-task-creator {
+	margin-bottom: $fnt-md;
+}
+.edit-tasks {
+	display: flex;
+	justify-content: space-around;
 }
