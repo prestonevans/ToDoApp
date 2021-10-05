@@ -15,8 +15,8 @@ newListForm.addEventListener('submit', e => {
     function invalidInput() {
         return newListInput.value = null; 
     }
-    const listName = newListInput.value;
-    if (listName === null || listName.trim() === '' || listName === 'Enter something valid') {
+    const listName = newListInput.value.trim();
+    if (listName === null || listName === '' || listName === 'Enter something valid') {
         newListInput.value = 'Enter something valid';
         setTimeout(invalidInput, 1000);
         return

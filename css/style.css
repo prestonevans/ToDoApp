@@ -53,6 +53,7 @@ body {
 .task-list .list-name {
   display: inline-block;
   cursor: pointer;
+  text-transform: capitalize;
 }
 .task-list .list-name:hover, .task-list .list-name:focus {
   opacity: 0.7;
