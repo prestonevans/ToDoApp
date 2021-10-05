@@ -6,6 +6,9 @@ $clr-warning: rgb(99, 36, 36);
 $fnt-md: 1.5rem;
 $fnt-sm: 1rem;
 
+$box-size: .75em;
+
+$b-rd-sm: .25rem;
 $b-rd: 1rem;
 
 $trans: .2s ease-in;
@@ -41,6 +44,10 @@ body {
 }
 .all-tasks {
 	grid-area: lists;
+	.task-list-title {
+		margin: 0;
+		margin-top: 1rem;
+	}
 }
 .task-list {
 	font-size: 1.2rem;
@@ -48,13 +55,22 @@ body {
 	list-style: circle;
 	list-style-position: inside;
 	padding-left: .1em;
+	transition: opacity $trans;
+	display: flex;
+	flex-flow: column;
+	align-items: flex-start;
 	.active-list {
 		font-weight: 700;
 		letter-spacing: 1px;
 	}
-}
-.todo-list {
-	grid-area: active;
+	.list-name {
+		display: inline-block;
+		cursor: pointer;
+		&:hover,
+		&:focus {
+			opacity: .7;
+		}
+	}
 }
 form {
 	display: flex;
@@ -77,6 +93,13 @@ form {
 		&:focus {
 			opacity: .7;
 			transform: scale(1.4);
+		}
+	}
+	&.delete {
+		font-size: $fnt-sm;
+		&:hover,
+		&:focus {
+			opacity: .5;
 		}
 	}
 }
@@ -103,21 +126,66 @@ form {
 	}
 }
 .todo-list {
+	grid-area: active;
 	border: 1px solid $clr-light;
 	border-radius: $b-rd;
 	padding: 1rem;
 }
 .todo-header {
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
-	h2 {
+	margin-bottom: $fnt-md;
+	.list-title {
 		margin: 0;
-		margin-bottom: $fnt-md;
+		margin-right: 1em;
 	}
 	.task-count {
 		font-size: $fnt-sm;
 	}
 }
+// [type='checkbox']:focus + label .custom-checkbox,
+// [type='checkbox']:focus + label,
+.task:hover .custom-checkbox {
+	opacity: .5;
+}
+[type='checkbox']:checked + label .custom-checkbox {
+	background-color: $clr-light;
+}
+[type='checkbox']:checked + label::after {
+	width: 100%;
+}
+.tasks {
+	label {
+		cursor: pointer;
+		position: relative;
+		transition: opacity $trans;
+		&::after {
+			content: '';
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			height: 2px;
+			width: 0%;
+			background-color: $clr-light;
+			position: absolute;
+			transition: width $trans;
+		}
+	}
+	[type='checkbox'] {
+		opacity: 0;
+		position: absolute;
+	}
+	.custom-checkbox {
+		display: inline-block;
+		width: $box-size;
+		height: $box-size;
+		margin-right: .5rem;
+		border: 1px solid $clr-light;
+		border-radius: $b-rd-sm;
+	}
+}
+
 .todo-body {
 	margin-bottom: $fnt-sm;
 }
