@@ -65,6 +65,7 @@ body {
 	.list-name {
 		display: inline-block;
 		cursor: pointer;
+		text-transform: capitalize;
 		&:hover,
 		&:focus {
 			opacity: .7;
