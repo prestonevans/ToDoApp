@@ -133,10 +133,6 @@ form {
   font-size: 1rem;
 }
 
-.task:hover .custom-checkbox {
-  opacity: 0.5;
-}
-
 [type=checkbox]:checked + label .custom-checkbox {
   background-color: #f4f4f4;
 }
@@ -149,6 +145,9 @@ form {
   cursor: pointer;
   position: relative;
   transition: opacity 0.2s ease-in;
+}
+.tasks label:hover .custom-checkbox, .tasks label:hover {
+  opacity: 0.5;
 }
 .tasks label::after {
   content: "";

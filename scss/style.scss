@@ -146,9 +146,6 @@ form {
 }
 // [type='checkbox']:focus + label .custom-checkbox,
 // [type='checkbox']:focus + label,
-.task:hover .custom-checkbox {
-	opacity: .5;
-}
 [type='checkbox']:checked + label .custom-checkbox {
 	background-color: $clr-light;
 }
@@ -160,6 +157,10 @@ form {
 		cursor: pointer;
 		position: relative;
 		transition: opacity $trans;
+		&:hover .custom-checkbox,
+		&:hover {
+			opacity: .5;
+		}
 		&::after {
 			content: '';
 			left: 2rem;
