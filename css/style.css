@@ -98,6 +98,7 @@ form {
   transition: border-bottom 0.2s ease-in;
   caret-color: #f4f4f4;
   color: #f4f4f4;
+  padding: 0.25em;
 }
 .new.list {
   font-size: 1rem;
@@ -183,7 +184,7 @@ form {
 
 .edit-tasks {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 /*# sourceMappingURL=style.css.map */

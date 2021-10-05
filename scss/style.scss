@@ -1,7 +1,6 @@
 $clr-primary: rgb(54, 112, 199);
 $clr-light: rgb(244, 244, 244);
 $clr-dark: rgb(51, 51, 51);
-$clr-warning: rgb(99, 36, 36);
 
 $fnt-md: 1.5rem;
 $fnt-sm: 1rem;
@@ -112,6 +111,7 @@ form {
 	transition: border-bottom $trans;
 	caret-color: $clr-light;
 	color: $clr-light;
+	padding: .25em;
 	&.list {
 		font-size: $fnt-sm;
 	}
@@ -186,7 +186,6 @@ form {
 		border-radius: $b-rd-sm;
 	}
 }
-
 .todo-body {
 	margin-bottom: $fnt-sm;
 }
@@ -195,5 +194,5 @@ form {
 }
 .edit-tasks {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 }
