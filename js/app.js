@@ -74,6 +74,13 @@ function render() {
 	});
 }
 deleteList.addEventListener('click', () => {
-	console.log(deleteList);
+	for (let i = 0; i < lists.length; i++) {
+		if (lists[i].name.toLowerCase() === SelectedList.toLocaleLowerCase()) {
+			lists.splice(i, 1);
+		}
+	}
+	SelectedList = null;
+	render();
+	save();
 });
 render();
