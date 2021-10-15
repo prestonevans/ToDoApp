@@ -1,6 +1,7 @@
 const listContainer = document.querySelector('.task-list');
 const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
+const deleteList = document.querySelectorAll('.delete')[1];
 
 const LocalStorageList = 'list';
 const LocalStorageActiveList = 'active.list';
@@ -48,7 +49,7 @@ newListForm.addEventListener('submit', (e) => {
 });
 
 function createList(name) {
-	return { id: Date.now().toString(), name: name, tasks: [] };
+	return { name: name, tasks: [] };
 }
 
 function save() {
@@ -58,18 +59,21 @@ function save() {
 
 function render() {
 	listContainer.innerHTML = '';
-	lists.forEach((list, i) => {
+	lists.forEach((list) => {
 		const listElement = document.createElement('li');
-		listElement.dataset.listId = list.id;
+		listElement.dataset.listId = list.name;
 		listElement.classList.add('list-name');
 		listElement.innerText = list.name;
 		if (!SelectedList) {
-			SelectedList = lists[0].id;
+			SelectedList = lists[0].name;
 		}
-		if (list.id === SelectedList) {
+		if (list.name === SelectedList) {
 			listElement.classList.add('active-list');
 		}
 		listContainer.append(listElement);
 	});
 }
+deleteList.addEventListener('click', () => {
+	console.log(deleteList);
+});
 render();
