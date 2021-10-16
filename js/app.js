@@ -66,7 +66,7 @@ newListForm.addEventListener('submit', (e) => {
 });
 
 function createList(name) {
-	return { name: name, tasks: [] };
+	return { name: name, tasks: [ { name: 'Shit', complete: true } ] };
 }
 
 function save() {
@@ -91,9 +91,6 @@ function render() {
 	}
 }
 function renderTasks(taskList) {
-	taskList.tasks.push('test');
-	taskList.tasks.push('test2');
-	taskList.tasks.push('test3');
 	taskList.tasks.forEach((task, i) => {
 		const div = document.createElement('div');
 		const input = document.createElement('input');
@@ -104,14 +101,14 @@ function renderTasks(taskList) {
 		div.classList.add('tasks');
 		input.type = 'checkbox';
 		input.id = `task-${i + 1}`;
+		input.checked = task.complete;
 		div.append(input);
 		label.htmlFor = `task-${i + 1}`;
 		span.classList.add('custom-checkbox');
 		label.append(span);
-		label.append(task);
+		label.append(task.name);
 		div.append(label);
 		body.append(div);
-		console.log(label);
 	});
 }
 function renderList() {
