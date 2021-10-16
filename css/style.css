@@ -148,6 +148,9 @@ form {
   width: calc(100% - 2rem);
 }
 
+.tasks {
+  margin-bottom: 0.5em;
+}
 .tasks label {
   cursor: pointer;
   position: relative;
