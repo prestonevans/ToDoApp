@@ -86,7 +86,7 @@ function render() {
 				title.innerText = lists[i].name.toLowerCase();
 			}
 		}
-		console.log(tasks.parentElement);
+		tasks.innerHTML = '';
 	}
 }
 function renderList() {
