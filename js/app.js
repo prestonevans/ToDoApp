@@ -2,6 +2,7 @@ const listContainer = document.querySelector('.task-list');
 const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
 const deleteList = document.querySelectorAll('.delete')[1];
+const clearTask = document.querySelectorAll('.delete')[0];
 const newTaskForm = document.querySelector('.new-task-creator form');
 const newTaskInput = document.querySelector('.new-task-creator input');
 
@@ -24,7 +25,16 @@ listContainer.addEventListener('click', (e) => {
 	render();
 	save();
 });
-
+tasks.addEventListener('click', (e) => {
+	if (e.target.tagName.toLowerCase() === 'input') {
+		const selected = lists.find((list) => list.name === SelectedList);
+		const selectedTask = selected.tasks.find(
+			(task) => task.name.toLowerCase() === e.target.nextElementSibling.innerText.toLowerCase()
+		);
+		selectedTask.complete = e.target.checked;
+	}
+	save();
+});
 deleteList.addEventListener('click', () => {
 	for (let i = 0; i < lists.length; i++) {
 		if (lists[i].name.toLowerCase() === SelectedList.toLocaleLowerCase()) {
@@ -35,7 +45,13 @@ deleteList.addEventListener('click', () => {
 	render();
 	save();
 });
-
+clearTask.addEventListener('click', () => {
+	const selected = lists.find((list) => list.name === SelectedList);
+	const notDone = selected.tasks.filter((task) => task.complete === false);
+	selected.tasks = notDone;
+	render();
+	save();
+});
 newListForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	function invalidInput() {
