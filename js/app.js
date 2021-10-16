@@ -5,6 +5,7 @@ const deleteList = document.querySelectorAll('.delete')[1];
 const clearTask = document.querySelectorAll('.delete')[0];
 const newTaskForm = document.querySelector('.new-task-creator form');
 const newTaskInput = document.querySelector('.new-task-creator input');
+// const deleteTask = document.querySelectorAll('.todo-list button');
 
 const taskListDisplay = document.querySelector('.todo-list');
 const title = document.querySelector('.list-title');
@@ -16,6 +17,13 @@ const LocalStorageActiveList = 'active.list';
 
 let lists = JSON.parse(localStorage.getItem(LocalStorageList)) || [];
 let SelectedList = localStorage.getItem(LocalStorageActiveList);
+
+// deleteTask.forEach((task) => {
+// 	console.log(task);
+// 	task.addEventListener('click', () => {
+// 		console.log('hello');
+// 	});
+// });
 
 listContainer.addEventListener('click', (e) => {
 	if (e.target.tagName.toLowerCase() === 'li') {
@@ -45,6 +53,17 @@ deleteList.addEventListener('click', () => {
 	render();
 	save();
 });
+function deleteTask(e) {
+	const selectedTask = e.target.previousElementSibling.innerText;
+	const selectList = lists.find((list) => list.name === SelectedList);
+	for (let i = 0; i < selectList.tasks.length; i++) {
+		if (selectList.tasks[i].name.toLowerCase() === selectedTask.toLowerCase()) {
+			selectList.tasks.splice(i, 1);
+		}
+	}
+	render();
+	save();
+}
 clearTask.addEventListener('click', () => {
 	const selected = lists.find((list) => list.name === SelectedList);
 	const notDone = selected.tasks.filter((task) => task.complete === false);
@@ -145,6 +164,7 @@ function render() {
 		}
 	}
 }
+
 function renderTasks(taskList) {
 	taskList.tasks.forEach((task, i) => {
 		const div = document.createElement('div');
@@ -166,6 +186,7 @@ function renderTasks(taskList) {
 		div.append(label);
 		button.classList.add('btn');
 		button.innerText = 'Delete';
+		button.addEventListener('click', deleteTask);
 		div.append(button);
 		body.append(div);
 	});
