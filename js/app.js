@@ -80,7 +80,11 @@ function render() {
 		taskListDisplay.style.display = 'none';
 	} else {
 		taskListDisplay.style.display = 'block';
-		title.innerText = SelectedList.toLowerCase();
+		for (let i = 0; i < lists.length; i++) {
+			if (lists[i].name.toLowerCase() === SelectedList.toLocaleLowerCase()) {
+				title.innerText = lists[i].name.toLowerCase();
+			}
+		}
 	}
 }
 function renderList() {
