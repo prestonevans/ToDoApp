@@ -3,6 +3,15 @@ const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
 const deleteList = document.querySelectorAll('.delete')[1];
 
+const taskListDisplay = document.querySelector('.todo-list');
+const title = document.querySelector('.list-title');
+const count = document.querySelector('.task-count');
+const tasks = document.querySelector('.todo-body');
+
+console.log(tasks);
+console.log(count);
+console.log(title);
+console.log(taskListDisplay);
 const LocalStorageList = 'list';
 const LocalStorageActiveList = 'active.list';
 
@@ -14,6 +23,17 @@ listContainer.addEventListener('click', (e) => {
 		e.target.classList.add('active-list');
 		SelectedList = e.target.dataset.listId;
 	}
+	render();
+	save();
+});
+
+deleteList.addEventListener('click', () => {
+	for (let i = 0; i < lists.length; i++) {
+		if (lists[i].name.toLowerCase() === SelectedList.toLocaleLowerCase()) {
+			lists.splice(i, 1);
+		}
+	}
+	SelectedList = null;
 	render();
 	save();
 });
@@ -59,6 +79,14 @@ function save() {
 
 function render() {
 	listContainer.innerHTML = '';
+	renderList();
+	if (!SelectedList) {
+		taskListDisplay.style.display = 'none';
+	} else {
+		taskListDisplay.style.display = 'block';
+	}
+}
+function renderList() {
 	lists.forEach((list) => {
 		const listElement = document.createElement('li');
 		listElement.dataset.listId = list.name;
@@ -73,14 +101,4 @@ function render() {
 		listContainer.append(listElement);
 	});
 }
-deleteList.addEventListener('click', () => {
-	for (let i = 0; i < lists.length; i++) {
-		if (lists[i].name.toLowerCase() === SelectedList.toLocaleLowerCase()) {
-			lists.splice(i, 1);
-		}
-	}
-	SelectedList = null;
-	render();
-	save();
-});
 render();
