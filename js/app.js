@@ -84,10 +84,35 @@ function render() {
 		for (let i = 0; i < lists.length; i++) {
 			if (lists[i].name.toLowerCase() === SelectedList.toLocaleLowerCase()) {
 				title.innerText = lists[i].name.toLowerCase();
+				tasks.innerHTML = '';
+				renderTasks(lists[i]);
 			}
 		}
-		tasks.innerHTML = '';
 	}
+}
+function renderTasks(taskList) {
+	taskList.tasks.push('test');
+	taskList.tasks.push('test2');
+	taskList.tasks.push('test3');
+	taskList.tasks.forEach((task, i) => {
+		const div = document.createElement('div');
+		const input = document.createElement('input');
+		const label = document.createElement('label');
+		const span = document.createElement('span');
+		const body = document.querySelector('.todo-body');
+
+		div.classList.add('tasks');
+		input.type = 'checkbox';
+		input.id = `task-${i + 1}`;
+		div.append(input);
+		label.for = `task-${i + 1}`;
+		span.classList.add('custom-checkbox');
+		label.append(span);
+		label.append(task);
+		div.append(label);
+		body.append(div);
+		console.log(label);
+	});
 }
 function renderList() {
 	lists.forEach((list) => {
