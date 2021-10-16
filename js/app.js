@@ -8,10 +8,6 @@ const title = document.querySelector('.list-title');
 const count = document.querySelector('.task-count');
 const tasks = document.querySelector('.todo-body');
 
-console.log(tasks);
-console.log(count);
-console.log(title);
-console.log(taskListDisplay);
 const LocalStorageList = 'list';
 const LocalStorageActiveList = 'active.list';
 
@@ -43,7 +39,7 @@ newListForm.addEventListener('submit', (e) => {
 	function invalidInput() {
 		return (newListInput.value = null);
 	}
-	const listName = newListInput.value.trim();
+	const listName = newListInput.value.trim().toLowerCase();
 	if (
 		listName === null ||
 		listName === '' ||
@@ -55,7 +51,7 @@ newListForm.addEventListener('submit', (e) => {
 		return;
 	}
 	for (let list of lists) {
-		if (listName.toLowerCase() === list.name.toLowerCase()) {
+		if (listName === list.name) {
 			newListInput.value = 'Name already exists';
 			setTimeout(invalidInput, 1000);
 			return;
@@ -84,6 +80,7 @@ function render() {
 		taskListDisplay.style.display = 'none';
 	} else {
 		taskListDisplay.style.display = 'block';
+		title.innerText = SelectedList.toLowerCase();
 	}
 }
 function renderList() {
