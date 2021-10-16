@@ -89,6 +89,10 @@ form {
 	color: $clr-light;
 	transition: opacity $trans, transform $trans;
 	outline: none;
+	&:hover,
+	&:focus {
+		opacity: .5;
+	}
 	&.create {
 		font-size: $fnt-md;
 		font-weight: 900;
@@ -101,10 +105,6 @@ form {
 	}
 	&.delete {
 		font-size: $fnt-sm;
-		&:hover,
-		&:focus {
-			opacity: .5;
-		}
 	}
 }
 label {
@@ -163,6 +163,8 @@ label {
 }
 .tasks {
 	margin-bottom: .5em;
+	display: flex;
+	justify-content: space-between;
 	label {
 		cursor: pointer;
 		position: relative;

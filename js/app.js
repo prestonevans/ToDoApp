@@ -83,41 +83,41 @@ newListForm.addEventListener('submit', (e) => {
 	save();
 });
 
-newTaskForm.addEventListener('submit', (e) => {
-	e.preventDefault();
-	function invalidInput() {
-		return (newTaskInput.value = null);
-	}
-	const taskName = newTaskInput.value.trim().toLowerCase();
-	if (
-		taskName === null ||
-		taskName === '' ||
-		taskName === 'Enter something valid' ||
-		taskName === 'Name already exists'
-	) {
-		newTaskInput.value = 'Enter something valid';
-		setTimeout(invalidInput, 1000);
-		return;
-	}
-	const selected = lists.find((list) => list.name === SelectedList);
-	for (let task of selected.tasks) {
-		if (taskName === task.name) {
-			newTaskInput.value = 'Name already exists';
-			setTimeout(invalidInput, 1000);
-			return;
-		}
-	}
-	const task = createTask(taskName);
-	newTaskInput.value = null;
-	for (let i = 0; i < lists.length; i++) {
-		if (lists[i].name.toLowerCase() === SelectedList.toLocaleLowerCase()) {
-			lists[i].tasks.push(task);
-		}
-	}
-	// SelectedList = listName;
-	render();
-	save();
-});
+// newTaskForm.addEventListener('submit', (e) => {
+// 	e.preventDefault();
+// 	function invalidInput() {
+// 		return (newTaskInput.value = null);
+// 	}
+// 	const taskName = newTaskInput.value.trim().toLowerCase();
+// 	if (
+// 		taskName === null ||
+// 		taskName === '' ||
+// 		taskName === 'Enter something valid' ||
+// 		taskName === 'Name already exists'
+// 	) {
+// 		newTaskInput.value = 'Enter something valid';
+// 		setTimeout(invalidInput, 1000);
+// 		return;
+// 	}
+// 	const selected = lists.find((list) => list.name === SelectedList);
+// 	for (let task of selected.tasks) {
+// 		if (taskName === task.name) {
+// 			newTaskInput.value = 'Name already exists';
+// 			setTimeout(invalidInput, 1000);
+// 			return;
+// 		}
+// 	}
+// 	const task = createTask(taskName);
+// 	newTaskInput.value = null;
+// 	for (let i = 0; i < lists.length; i++) {
+// 		if (lists[i].name.toLowerCase() === SelectedList.toLocaleLowerCase()) {
+// 			lists[i].tasks.push(task);
+// 		}
+// 	}
+// 	// SelectedList = listName;
+// 	render();
+// 	save();
+// });
 function createTask(name) {
 	return { name: name, complete: false };
 }
