@@ -105,7 +105,7 @@ function renderTasks(taskList) {
 		input.type = 'checkbox';
 		input.id = `task-${i + 1}`;
 		div.append(input);
-		label.for = `task-${i + 1}`;
+		label.htmlFor = `task-${i + 1}`;
 		span.classList.add('custom-checkbox');
 		label.append(span);
 		label.append(task);

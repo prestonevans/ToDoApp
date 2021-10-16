@@ -145,7 +145,7 @@ form {
 }
 
 [type=checkbox]:checked + label::after {
-  width: calc(100% - 2rem);
+  width: calc(100% - 1em);
 }
 
 .tasks {
@@ -161,7 +161,7 @@ form {
 }
 .tasks label::after {
   content: "";
-  left: 2rem;
+  left: 1em;
   top: 50%;
   transform: translateY(-50%);
   height: 2px;
